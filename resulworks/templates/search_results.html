@@ -1,0 +1,95 @@
+<html>
+<head>
+ <title>Results for {{ query }}</title>
+</head>
+<body>
+<center>
+
+    <H2 align="center">Sir Chhotu Ram Institue Of Engineering and Technology </H2>
+    <h3 align="center"> CCS Uninversity , Meerut </h3>
+<!-- 	<IMG src="img.JPG"/> -->
+	<IMG src="{{ MEDIA_URL }}images/logo.png"/>
+<div align="center">
+<b><a href="/first">First Year</a></b>
+<b><a href="/second">Second Year</a></b>
+<b><a href="/third">Third Year</a></b>
+<b><a href="/fourth">Fourth Year</a></b>
+</div>
+</center>
+</body>
+
+{% if exams %}
+	<center>
+	<table border="1" cellpadding="5" cellspacing="5" width="50%">
+	<tr>
+	<th>Name</th>
+	       
+	{% for student in stud %}
+	
+	<td>
+		{{ student.student_name }}
+	</td>
+	
+	{% endfor %}
+	
+	</tr>
+	<tr>
+	<th>Roll number</th>
+	{% for student in stud %}
+		<td> {{ student.student_id }}</td>
+	{% endfor %}
+	</tr>
+	<tr>
+	<th>Department</th>
+	{% for student in stud %}
+		<td> {{ student.student_dep }}</td>
+	{% endfor %}
+	</tr>
+	
+	
+	</div>
+	<table border="1" cellpadding="5" cellspacing="5" width="50%">	
+	<tr>	
+	<th>Subject</th>
+	<th>Maximum Marks</th>
+	<th>Marks Obtained</th>
+	</tr>	
+	<tr>	
+		{% for exam in exams %}
+		
+		<tr>
+		<td>{{ exam.subject }}</td><td>{{ exam.maximum_marks }}</td><td>{{ exam.marks_obtained  }}</li></td>
+		</tr>
+		{% endfor %}
+		
+	</tr>
+	</table>
+	<table border="1" cellpadding="1" cellspacing="3" width="50%">
+	<tr>
+	<th rowspan="2">Total Marks Obtained</th><td>{{ total }}
+	<th rowspan="2">Grand Total</th><td>{{ gtot }}</td>
+	</tr>
+	</table>
+	</center>
+{% else %}
+	<p> No record Found </p>
+{% endif %}
+
+
+</html>
+{% block footer %}
+<hr>
+<center><div style="margin-left:"><img src="{{ MEDIA_URL }}images/openshift.png" width="220" height="150"/>
+
+</div></center>
+<center>
+<div 
+<p> AregeeFrameWorks Production.</p>
+<right><a href="https://twitter.com/iamaregee" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @iamaregee</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></right></div></center>
+
+<div style="margin-right:-199px;margin-top:-60px;"><a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangopowered126x54.gif" border="0" alt="Powered by Django." title="Powered by Django." /></a></div>
+
+
+
+{% endblock %}
